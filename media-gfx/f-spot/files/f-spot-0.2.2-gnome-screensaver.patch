@@ -1,0 +1,11 @@
+--- configure.in.orig	2006-10-16 21:13:27.000000000 +1000
++++ configure.in	2006-10-16 21:14:29.000000000 +1000
+@@ -136,7 +136,7 @@
+ 	GNOME_SCREENSAVER_SAVERDIR=$gnome_screensaver_prefix/libexec/gnome-screensaver
+ fi
+ 
+-GNOME_SCREENSAVER_THEMESDIR=$gnome_screensaver_prefix/share/gnome-screensaver/themes
++GNOME_SCREENSAVER_THEMESDIR=$gnome_screensaver_prefix/share/applications/screensavers
+ 
+ AC_SUBST(GNOME_SCREENSAVER_SAVERDIR)
+ AC_SUBST(GNOME_SCREENSAVER_THEMESDIR)

@@ -1,0 +1,47 @@
+--- mail/em-format-html.c.orig	2006-07-13 09:22:58.000000000 +1000
++++ mail/em-format-html.c	2006-07-13 09:36:18.000000000 +1000
+@@ -1662,6 +1662,11 @@
+ 	g_free(value);
+ }
+ 
++static char *mail_icons[] = {
++	"monkey-16.png", "thunderbird-16.png", "oexpress-16.png", "outlook-16.png", 
++	"applemail-16.png", "kmail-16.png", "opera-16.png"
++};
++
+ static void
+ efh_format_headers(EMFormatHTML *efh, CamelStream *stream, CamelMedium *part)
+ {
+@@ -1671,6 +1676,7 @@
+ 	CamelContentType *ct;
+ 	struct _camel_header_raw *header;
+ 	int rupert = FALSE;
++	int icon_index = -1;
+ 			
+ 	ct = camel_mime_part_get_content_type((CamelMimePart *)part);
+ 	charset = camel_content_type_param (ct, "charset");
+@@ -1710,7 +1716,14 @@
+ 					mailer_shown = TRUE;
+ 					
+ 					efh_format_header (emf, stream, part, &xmailer, h->flags, charset);
+-					if (strstr(header->value, "Evolution"))
++					if (strstr(header->value, "Evolution")) icon_index = 0;
++					else if (strstr(header->value, "Thunderbird")) icon_index = 1;
++					else if (strstr(header->value, "Outlook Express")) icon_index =2;
++					else if (strstr(header->value, "Outlook")) icon_index = 3;
++					else if (strstr(header->value, "Apple")) icon_index = 4;
++					else if (strstr(header->value, "KMail")) icon_index = 5;
++					else if (strstr(header->value, "Opera")) icon_index = 6;
++					if (icon_index != -1)
+ 						rupert = TRUE;
+ 				} else if (!g_ascii_strcasecmp (header->name, h->name)) {
+ 					efh_format_header(emf, stream, part, header, h->flags, charset);
+@@ -1733,7 +1746,7 @@
+ 			camel_stream_printf(stream, "<td align=\"right\" valign=\"top\"><img width=16 height=16 src=\"%s\"></td>", classid);
+ 
+ 			pngfile = g_build_filename (EVOLUTION_ICONSDIR,
+-						    "monkey-16.png",
++						    mail_icons[icon_index],
+ 						    NULL);
+ 			iconpart = em_format_html_file_part((EMFormatHTML *)emf, "image/png", pngfile);
+ 			g_free (pngfile);

@@ -1,0 +1,18 @@
+--- Filters/entagged-sharp/Mp3/Mp3FileReader.cs.orig	2006-11-22 19:13:15.000000000 +1100
++++ Filters/entagged-sharp/Mp3/Mp3FileReader.cs	2006-11-22 19:14:09.000000000 +1100
+@@ -43,7 +43,6 @@
+ 	{	
+ 		private Mp3InfoReader ir = new Mp3InfoReader();
+ 		private Id3v2TagReader idv2tr = new Id3v2TagReader();
+-		private Id3v1TagReader idv1tr = new Id3v1TagReader();
+ 		
+ 		protected override EncodingInfo GetEncodingInfo(Stream raf, 
+ 			string mime) 
+@@ -56,7 +55,6 @@
+ 			Id3Tag tag = new Id3Tag();	
+ 
+ 			idv2tr.Read(tag, raf);
+-			idv1tr.Read(tag, raf);
+ 
+ 			return tag;
+ 		}

@@ -1,0 +1,8 @@
+DIST nautilus-image-converter-0.0.9.tar.bz2 270645 RMD160 a2a4ac0cdf958ae959678ef406ada447fd39102e SHA1 e6f4d105a49ac5f9b52ed47e6e3529b2bcaaa30f SHA256 54d544ad1e7ce56920526b342cf28cd8504c3afab833c19221dd00f372b20c54
+EBUILD nautilus-image-converter-0.0.9.ebuild 685 RMD160 8a331a05d0b303cf17a62814b1cd87620224e44e SHA1 e81d1d6280cee5973a48c72b14089ccdfd83b3e8 SHA256 c8e5d213ee3b0927a8ab4cd3a9b2f6316cf309771ad4b7a386ebd3d9035161a7
+MD5 b99acf9b0feeda378116847b4e266208 nautilus-image-converter-0.0.9.ebuild 685
+RMD160 8a331a05d0b303cf17a62814b1cd87620224e44e nautilus-image-converter-0.0.9.ebuild 685
+SHA256 c8e5d213ee3b0927a8ab4cd3a9b2f6316cf309771ad4b7a386ebd3d9035161a7 nautilus-image-converter-0.0.9.ebuild 685
+MD5 2b9db97cbe3c46a939dc74f5dfa113be files/digest-nautilus-image-converter-0.0.9 295
+RMD160 c0e7b5316db449d26383f8efe6b8becf68250af4 files/digest-nautilus-image-converter-0.0.9 295
+SHA256 db3312ecf3a51f0904e634f51120027e114ec3e1bf9ed22f542b3808bee7dd2e files/digest-nautilus-image-converter-0.0.9 295
