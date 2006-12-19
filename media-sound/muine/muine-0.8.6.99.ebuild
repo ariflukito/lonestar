@@ -6,7 +6,7 @@ inherit gnome2 mono eutils multilib autotools
 
 DESCRIPTION="A music player for GNOME"
 HOMEPAGE="http://muine-player.org/"
-SRC_URI="${HOMEPAGE}/releases/${P}.tar.gz"
+SRC_URI="${HOMEPAGE}/alphas/${P}.tar.gz"
 
 LICENSE="GPL-2"
 IUSE="xine mad vorbis flac aac"
@@ -64,26 +64,27 @@ DOCS="AUTHORS COPYING ChangeLog INSTALL \
 
 AT_M4DIR="${S}/m4"
 
-pkg_setup() {
-	if ! built_with_use sys-apps/dbus mono ; then
-		echo
-		eerror "In order to compile muine, you need to have sys-apps/dbus emerged"
-		eerror "with 'mono' in your USE flags. Please add that flag, re-emerge"
-		eerror "dbus, and then emerge muine."
-		die "sys-apps/dbus is missing the .NET binding."
-	fi
-}
+#pkg_setup() {
+#	if ! built_with_use sys-apps/dbus mono ; then
+#		echo
+#		eerror "In order to compile muine, you need to have sys-apps/dbus emerged"
+#		eerror "with 'mono' in your USE flags. Please add that flag, re-emerge"
+#		eerror "dbus, and then emerge muine."
+#		die "sys-apps/dbus is missing the .NET binding."
+#	fi
+#}
 
 src_unpack() {
 	unpack ${A}
 	cd ${S}
 	# Fix the install location of the dbus service file
-	sed -i "s:libdir)/dbus-1.0:datadir)/dbus-1:" \
-		${S}/data/Makefile.am || die "sed failed"
+	#sed -i "s:libdir)/dbus-1.0:datadir)/dbus-1:" \
+	#	${S}/data/Makefile.am || die "sed failed"
 
 	cp ${FILESDIR}/*.png plugins
 
 	epatch ${FILESDIR}/${PN}-0.8.5-tray.patch
+	epatch ${FILESDIR}/${PN}-0.8.6.99-dbus_fix.patch
 		
 	intltoolize --force --copy || die "intltoolize failed"
 	eautoreconf
