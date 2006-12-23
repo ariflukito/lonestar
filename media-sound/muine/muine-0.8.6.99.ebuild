@@ -84,7 +84,6 @@ src_unpack() {
 	cp ${FILESDIR}/*.png plugins
 
 	epatch ${FILESDIR}/${PN}-0.8.5-tray.patch
-	epatch ${FILESDIR}/${PN}-0.8.6.99-dbus_fix.patch
 		
 	intltoolize --force --copy || die "intltoolize failed"
 	eautoreconf
