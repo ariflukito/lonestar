@@ -1,0 +1,10 @@
+--- src/Global.cs.orig	2006-10-26 02:36:59.000000000 +1000
++++ src/Global.cs	2006-10-26 02:37:34.000000000 +1000
+@@ -110,6 +110,7 @@
+ 		public static void Main (string [] args)
+ 		{
+ 			Application.Init ();
++			Gnome.Vfs.Vfs.Initialize();
+ 
+ 			// Try to find a running Muine
+ 			try {

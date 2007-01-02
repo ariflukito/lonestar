@@ -1,0 +1,19 @@
+--- plugins/TrayIcon.cs.orig	2006-08-26 02:00:33.000000000 +1000
++++ plugins/TrayIcon.cs	2006-08-26 02:01:16.000000000 +1000
+@@ -201,7 +201,6 @@
+ 
+ 			switch (args.Event.Button)
+ 			{
+-			case 1:
+ 			case 3:
+ 				icon.State = StateType.Active;
+ 
+@@ -213,7 +212,7 @@
+ 				
+ 				break;
+ 
+-			case 2:
++			case 1:
+ 				player.SetWindowVisible (!player.WindowVisible, args.Event.Time);
+ 
+ 				break;

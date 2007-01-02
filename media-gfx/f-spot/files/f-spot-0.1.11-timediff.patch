@@ -1,0 +1,11 @@
+--- src/TimeDialog.cs.orig	2006-08-18 04:25:09.000000000 +1000
++++ src/TimeDialog.cs	2006-08-18 04:25:26.000000000 +1000
+@@ -222,7 +222,7 @@
+ 			try {
+ 				TimeSpan span = TimeSpan.Parse (offset_entry.Text);
+ 				if (span != current)
+-					Offset = current;
++					Offset = span;
+ 			} catch (System.Exception e) {
+ 				System.Console.WriteLine ("unparsable span {0}", offset_entry.Text);
+ 			}

@@ -1,0 +1,11 @@
+--- src/obex-client-source.c.orig	2006-11-09 00:03:54.000000000 +1100
++++ src/obex-client-source.c	2006-11-09 00:21:54.000000000 +1100
+@@ -449,7 +449,7 @@
+     gchar *destaddr;
+ 
+     g_return_val_if_fail (bdaddr != NULL, NULL);
+-    g_return_val_if_fail (channel <= 0, NULL);
++    g_return_val_if_fail (channel > 0, NULL);
+ 
+     destaddr = g_ascii_strup (bdaddr, strlen(bdaddr));
+ 

@@ -1,0 +1,11 @@
+--- org/gudy/azureus2/ui/swt/views/configsections/ConfigSectionInterfaceDisplay.java.orig	2006-09-20 21:43:28.000000000 +1000
++++ org/gudy/azureus2/ui/swt/views/configsections/ConfigSectionInterfaceDisplay.java	2006-09-20 21:43:42.000000000 +1000
+@@ -80,7 +80,7 @@
+ 
+ 		BooleanParameter bpCustomTab = new BooleanParameter(cLook, "useCustomTab",
+ 				true, MSG_PREFIX + "useCustomTabs");
+-		Control cFancyTab = new BooleanParameter(cLook, "GUI_SWT_bFancyTab", true,
++		Control cFancyTab = new BooleanParameter(cLook, "GUI_SWT_bFancyTab", false,
+ 				MSG_PREFIX + "useFancyTabs").getControl();
+ 
+ 		Control[] controls = { cFancyTab };

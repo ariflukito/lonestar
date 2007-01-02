@@ -1,0 +1,22 @@
+--- src/SkipToWindow.cs.orig	2006-10-26 02:51:46.000000000 +1000
++++ src/SkipToWindow.cs	2006-10-26 02:52:03.000000000 +1000
+@@ -129,7 +129,7 @@
+ 		}
+ 
+ 		// Handlers :: OnWindowDeleteEvent
+-		public void OnWindowDeleteEvent (object o, EventArgs a)
++		public void OnWindowDeleteEvent (object o, DeleteEventArgs a)
+ 		{
+ 			window.Visible = false;			
+ 			DeleteEventArgs args = (DeleteEventArgs) a;
+--- src/ProgressWindow.cs.orig	2006-10-26 02:52:15.000000000 +1000
++++ src/ProgressWindow.cs	2006-10-26 02:52:38.000000000 +1000
+@@ -91,7 +91,7 @@
+ 
+ 		// Handlers
+ 		// Handlers :: OnWindowResponse
+-		public void OnWindowResponse (object o, EventArgs a)
++		public void OnWindowResponse (object o, ResponseArgs a)
+ 		{
+ 			window.Visible = false;
+ 			canceled = true;

@@ -1,0 +1,18 @@
+--- src/ColorDialog.cs.orig	2006-09-26 10:03:15.000000000 +1000
++++ src/ColorDialog.cs	2006-09-26 10:04:02.000000000 +1000
+@@ -536,14 +536,13 @@
+ 			hue_spinbutton.Adjustment = hue_scale.Adjustment;
+ 			sat_spinbutton.Adjustment = sat_scale.Adjustment;
+ 			
++			exposure_spinbutton.Adjustment.ChangeValue();
+ 			temp_spinbutton.Adjustment.ChangeValue ();
+ 			temptint_spinbutton.Adjustment.ChangeValue ();
+ 			brightness_spinbutton.Adjustment.ChangeValue ();
+ 			contrast_spinbutton.Adjustment.ChangeValue ();
+ 			hue_spinbutton.Adjustment.ChangeValue ();
+ 			sat_spinbutton.Adjustment.ChangeValue ();
+-			hue_spinbutton.Adjustment.ChangeValue ();
+-			sat_spinbutton.Adjustment.ChangeValue ();
+ 			
+ 			exposure_scale.ValueChanged += RangeChanged;
+ 			temp_scale.ValueChanged += RangeChanged;
