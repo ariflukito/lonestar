@@ -1,0 +1,10 @@
+--- src/gs-job.c.orig	2007-01-06 03:44:17.000000000 +1100
++++ src/gs-job.c	2007-01-06 03:44:44.000000000 +1100
+@@ -247,6 +247,7 @@
+         static const char *allowed_env_vars [] = {
+                 "PATH",
+                 "SESSION_MANAGER",
++		"DBUS_SESSION_BUS_ADDRESS",
+                 "XAUTHORITY",
+                 "XAUTHLOCALHOSTNAME",
+                 "LANG",

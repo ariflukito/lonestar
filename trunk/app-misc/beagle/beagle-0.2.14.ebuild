@@ -95,6 +95,7 @@ src_unpack() {
 	epatch ${FILESDIR}/${PN}-0.2.12-quicktips.patch
 	epatch ${FILESDIR}/${PN}-0.2.12-tray.patch
 	epatch ${FILESDIR}/${PN}-0.2.13-id3.patch
+	epatch ${FILESDIR}/${P}-contact-crash.patch
 
 	eautoreconf
 }
