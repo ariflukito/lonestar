@@ -1,0 +1,33 @@
+--- beagled/EvolutionDataServerQueryable/BookContainer.cs.orig	2007-01-06 03:55:31.000000000 +1100
++++ beagled/EvolutionDataServerQueryable/BookContainer.cs	2007-01-06 03:56:45.000000000 +1100
+@@ -247,6 +247,7 @@
+ 			indexable.Timestamp = rev;
+ 			indexable.HitType = "Contact";
+ 
++			indexable.AddProperty (Property.NewUnsearched ("fixme:client", "evolution"));
+ 			indexable.AddProperty (Property.NewUnsearched ("fixme:source_uid", this.source.Uid));
+ 			indexable.AddProperty (Property.NewUnsearched ("fixme:uid", contact.Id));
+ 						
+--- search/Tiles/Contact.cs.orig	2007-01-06 03:59:20.000000000 +1100
++++ search/Tiles/Contact.cs	2007-01-06 04:01:27.000000000 +1100
+@@ -80,7 +80,7 @@
+ 		{
+ 			SafeProcess p = null;
+ 
+-   			if (client == "evolution") {
++   			if (client == "evolution" || (client == null && uri.StartsWith("contacts:"))) {
+ 				p = new SafeProcess ();
+ 				p.Arguments = new string [2];
+ 				p.Arguments [0] = "evolution";
+@@ -102,6 +102,11 @@
+ 		{
+ 			SafeProcess p = GetClientProcess (Hit.GetFirstProperty ("fixme:client"), Hit.EscapedUri);
+ 
++			if (p == null) {
++				Console.WriteLine ("Opening contact '{0}' is unsupported!", Hit.EscapedUri);
++				return;
++			}
++
+ 			try {
+ 				p.Start ();
+ 			} catch (SafeProcessException e) {

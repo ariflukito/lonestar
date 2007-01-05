@@ -1,0 +1,12 @@
+AUX gnome-screensaver-2.16.2-dbus-environment.patch 370 RMD160 b086373303791a1c717b7bbfc46e9e4272b1a29e SHA1 7adcebd7de4dd0df5cbfddd08b320f4d49433813 SHA256 7cc100505c84b78cc123dd5a8cfb19e919293ccb4ba04c9293d4fd9748728624
+MD5 94c2049718a874708ede6f414bb04d5b files/gnome-screensaver-2.16.2-dbus-environment.patch 370
+RMD160 b086373303791a1c717b7bbfc46e9e4272b1a29e files/gnome-screensaver-2.16.2-dbus-environment.patch 370
+SHA256 7cc100505c84b78cc123dd5a8cfb19e919293ccb4ba04c9293d4fd9748728624 files/gnome-screensaver-2.16.2-dbus-environment.patch 370
+DIST gnome-screensaver-2.16.2.tar.bz2 2035452 RMD160 fd0adf8dfaa2a7685bd935b6a213429c799e95ef SHA1 9076b5dd33fb642da3ab12ceeecbc0300d4008c5 SHA256 2149d7fed556a86825d1c9537d1a9dd7b0960baf6a571645715ecd3be0e6c17b
+EBUILD gnome-screensaver-2.16.2.ebuild 2811 RMD160 cca6d45e1eb49bd824a19e93284f8fd8b6266ac4 SHA1 fcbc4fa747598dbf5cee2b204515c679d58dd436 SHA256 96332141113e3cf0359172f271c6c5ca5f33dce612e7f0c7165ac617c12aacfb
+MD5 5ee525dd7bf838a210e89cd4d11639e2 gnome-screensaver-2.16.2.ebuild 2811
+RMD160 cca6d45e1eb49bd824a19e93284f8fd8b6266ac4 gnome-screensaver-2.16.2.ebuild 2811
+SHA256 96332141113e3cf0359172f271c6c5ca5f33dce612e7f0c7165ac617c12aacfb gnome-screensaver-2.16.2.ebuild 2811
+MD5 d6d9d3848c89f0fa52d0b19ddb40af65 files/digest-gnome-screensaver-2.16.2 280
+RMD160 e3fbec708dd075275c72001daecc867dc9969992 files/digest-gnome-screensaver-2.16.2 280
+SHA256 f481877a69608e5e36f45cdeafd1159ab497f8e490dce100b1bf4774ed59035a files/digest-gnome-screensaver-2.16.2 280
