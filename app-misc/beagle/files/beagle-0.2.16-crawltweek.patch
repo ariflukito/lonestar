@@ -43,8 +43,8 @@
 +CRAWL_DISABLE_DIRECTORIES="yes"
 +
 +CRAWL_CACHE_TEXT="no"
---- tools/Makefile.am.orig	2007-02-05 01:41:52.000000000 +1100
-+++ tools/Makefile.am	2007-02-05 02:00:12.000000000 +1100
+--- tools/Makefile.am.orig	2007-02-09 20:57:01.000000000 +1100
++++ tools/Makefile.am	2007-02-09 20:57:34.000000000 +1100
 @@ -36,9 +36,9 @@
  crondir = $(sysconfdir)/cron.daily
  
