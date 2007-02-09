@@ -1,6 +1,6 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/beagle-0.2.7.ebuild,v 1.2 2006/06/20 12:54:26 metalgod Exp $
+# $Header: /var/cvsroot/gentoo-x86/app-misc/beagle/beagle-0.2.16.ebuild,v 1.3 2007/02/08 13:21:28 opfer Exp $
 
 inherit gnome.org eutils autotools mono
 
@@ -9,11 +9,11 @@ HOMEPAGE="http://www.beagle-project.org/"
 
 LICENSE="MIT Apache-1.1"
 SLOT="0"
-KEYWORDS="~amd64 ~ppc ~x86"
-IUSE="chm debug evo galago gtk ole pdf python"
+KEYWORDS="~amd64 ~ppc x86"
+IUSE="chm doc evo galago gtk ole pdf python thunderbird"
 
 RDEPEND="
-	>=dev-lang/mono-1.1.16.1
+	>=dev-lang/mono-1.1.13.5
 	app-shells/bash
 	app-arch/zip
 	sys-devel/gettext
@@ -25,7 +25,7 @@ RDEPEND="
 	>=media-libs/libexif-0.6.0
 	>=dev-libs/libxml2-2.6.19
 
-	||		( 	>=dev-db/sqlite-3.3.1
+	||		(	>=dev-db/sqlite-3.3.1
 				=dev-db/sqlite-2* )
 
 	||	(	(	x11-libs/libX11
@@ -47,8 +47,10 @@ RDEPEND="
 				>=dev-dotnet/gsf-sharp-0.6
 				>=app-office/gnumeric-1.4.3-r3 )
 	pdf?	(	>=app-text/poppler-0.5.1 )
-	chm?	(	app-doc/chmlib ) 
-	galago?	(	>=dev-dotnet/galago-sharp-0.5.0)"
+	chm?	(	app-doc/chmlib )
+	galago? (	>=dev-dotnet/galago-sharp-0.5.0 )
+	doc?	(	dev-util/gtk-doc )
+	thunderbird?	(	>=mail-client/mozilla-thunderbird-1.5 )"
 
 DEPEND="${RDEPEND}
 	dev-util/pkgconfig
@@ -84,24 +86,23 @@ src_unpack() {
 	sed -i -e 's:prefix mono`/lib:libdir mono`:' \
 		${S}/configure.in || die "sed failed"
 
-	# Don't log so much
-	! use debug && sed -i -e \
-		's/defaultLevel = LogLevel.Debug/defaultLevel = LogLevel.Info/' \
-		Util/Logger.cs
+	epatch ${FILESDIR}/${PN}-0.2.12-quicktips.patch
+	epatch ${FILESDIR}/${PN}-0.2.13-id3.patch
+	epatch ${FILESDIR}/${PN}-log-level-warn.patch
+	epatch ${FILESDIR}/${P}-crawltweek.patch
+	epatch ${FILESDIR}/${P}-monofix.patch
 
-	epatch ${FILESDIR}/${PN}-0.2.4-CVE-2006-1296.patch
-	epatch ${FILESDIR}/${PN}-0.2.7-crawltweek.patch
-	epatch ${FILESDIR}/${PN}-0.2.8-quicktips.patch
-	epatch ${FILESDIR}/${PN}-0.2.9-tray.patch
-	
 	eautoreconf
 }
 
 src_compile() {
 	econf \
+		$(use_enable doc gtk-doc) \
+		$(use_enable thunderbird) \
 		$(use_enable evo evolution) \
 		$(use_enable gtk gui) \
 		$(use_enable python ) \
+		$(use_enable ole gsf-sharp ) \
 		--enable-libbeagle \
 		--disable-bludgeon \
 		|| die "configure failed"
@@ -122,15 +123,15 @@ src_install() {
 }
 
 pkg_postinst() {
-	einfo "If available, Beagle greatly benefits from using certain operating"
-	einfo "system features such as Extended Attributes and inotify."
+	elog "If available, Beagle greatly benefits from using certain operating"
+	elog "system features such as Extended Attributes and inotify."
 	echo
-	einfo "If you want static queryables such as the portage tree and system"
-	einfo "documentation you will need to edit the /etc/beagle/crawl-* files"
-	einfo "and change CRAWL_ENABLE from 'no' to 'yes'."
+	elog "If you want static queryables such as the portage tree and system"
+	elog "documentation you will need to edit the /etc/beagle/crawl-* files"
+	elog "and change CRAWL_ENABLE from 'no' to 'yes'."
 	echo
-	einfo "For more info on how to create the optimal beagle environment, and"
-	einfo "basic usage info, see the Gentoo page of the Beagle website:"
-	einfo " http://www.beagle-project.org/Gentoo_Installation"
+	elog "For more info on how to create the optimal beagle environment, and"
+	elog "basic usage info, see the Gentoo page of the Beagle website:"
+	elog " http://www.beagle-project.org/Gentoo_Installation"
 }
 
