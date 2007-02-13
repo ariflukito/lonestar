@@ -1,6 +1,6 @@
-# Copyright 1999-2006 Gentoo Foundation
+# Copyright 1999-2007 Gentoo Foundation
 # Distributed under the terms of the GNU General Public License v2
-# $Header: /var/cvsroot/gentoo-x86/media-gfx/f-spot/f-spot-0.2.2.ebuild,v 1.1 2006/10/13 20:21:16 joem Exp $
+# $Header: /var/cvsroot/gentoo-x86/media-gfx/f-spot/f-spot-0.3.3.ebuild,v 1.1 2007/02/12 23:29:37 joem Exp $
 
 inherit gnome2 mono eutils autotools
 
@@ -12,7 +12,8 @@ KEYWORDS="~amd64 ~ppc ~x86"
 IUSE=""
 
 RDEPEND=">=dev-lang/mono-1.1.10
-	>=sys-apps/dbus-0.30
+|| ( >=dev-libs/dbus-glib-0.71
+		( <sys-apps/dbus-0.90 >=sys-apps/dbus-0.35 ) )
 	>=dev-libs/glib-2
 	>=x11-libs/gtk+-2.6
 	>=dev-dotnet/gtk-sharp-2.7
@@ -52,9 +53,12 @@ src_unpack()
 	unpack ${A}
 	cd ${S}
 
-	# Gentoo uses older EXIF so name for now
+	epatch ${FILESDIR}/${P}-dont_eat_cpu.patch
+	# Gentoo used old so version until libexif-0.6.13-r2
+	if has_version "<media-libs/libexif-0.6.13-r2";
+	then
 	sed -i -e 's/EXIF_SOVERSION=12/EXIF_SOVERSION=10/' configure.in
-
+	fi
 	# Multilib fix
 	sed -i -e 's:prefix mono`/lib:libdir mono`:' \
 		configure.in || die "sed failed"
@@ -67,8 +71,7 @@ src_unpack()
 
 	epatch ${FILESDIR}/${PN}-0.2.1-glade.patch
 	epatch ${FILESDIR}/${PN}-0.2.2-gnome-screensaver.patch
-	epatch ${FILESDIR}/${PN}-0.3.0-icons.patch
-	
-	eautoreconf
+
+	eautoconf || die "autoconf failed"
 }
 
